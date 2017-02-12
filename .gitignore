@@ -6,7 +6,8 @@
 *.iobj
 *.ipdb
 unity_decoder/Debug/
-unity_decoder/libil2cpp/
+unity_decoder/libil2cpp*
+unity_decoder/liblibil2cpp.a
 /Debug/string_literal.txt
 /Debug/global-metadata.dat
 /Debug/global-metadata.dat-ios

@@ -36,7 +36,7 @@ def LoadMethods(ea = None):
         ea = ScreenEA();
     
     path = os.getcwd()
-    os.system(path+'/unity_decoder.exe')
+    os.system(path+'/unity_decoder')
     file = open('./method_name.txt')
     
     str_count = file.readline()
@@ -68,7 +68,7 @@ def LoadStrings(ea = None):
         ea = ScreenEA();
     
     path = os.getcwd()
-    os.system(path+'/unity_decoder.exe')
+    os.system(path+'/unity_decoder')
     file = open('./string_literal.txt')
     
     str_count = file.readline()
@@ -283,4 +283,4 @@ print "Ctrl-Alt-M : Load Methods"
 print "Ctrl-Alt-A : Automatically Load Everything (iOS and Android Only)"
 print "Ctrl-Alt-L : Locate Methods (TODO)"
 
-
+AutoLoad()

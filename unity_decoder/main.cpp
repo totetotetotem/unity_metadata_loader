@@ -8,10 +8,9 @@
 #include <cstddef>
 #include <cstdlib>
 #include <iomanip>
-#include <il2cpp-metadata.h>
-#include <vm/String.h>
-#include <vm/MetadataCache.h>
-#include <windows.h>
+#include "il2cpp-metadata.h"
+#include "vm/String.h"
+#include "vm/MetadataCache.h"
 #include <fstream>
 #include <cstdio>
 #include <cstdlib>

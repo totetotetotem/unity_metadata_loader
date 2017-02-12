@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 2.8)
+include_directories(./libil2cpp)
+link_directories(./)
+add_executable(unity_decoder main.cpp)
+target_link_libraries(unity_decoder libil2cpp)
