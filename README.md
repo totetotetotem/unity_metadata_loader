@@ -33,3 +33,10 @@ After recovering the symbols:
 ## Declaration
 
 You are not able to compile this project because the libil2cpp's source code is removed from this repository intentionally. If you would like to make modification to this project, please search for libil2cpp's source code on your own. However, any pull request is welcome.
+
+## Addition
+
+This repository forked from nevermoe/unity_metadata_loader  
+To Compile unity_decoder on Mac, you have to put liblibil2cpp.a in unity_decoder directory.  
+Before build liblibil2cpp, don't foreget to add external/boehmgc in project.   
+
