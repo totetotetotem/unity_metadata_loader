@@ -28,7 +28,7 @@ static void* s_GlobalMetadata;
 #define MAX_META_COUNT	100000
 char *g_metadataUsages[MAX_META_COUNT] = { NULL };
 //Il2CppMethodPointer g_methodPointers[MAX_META_COUNT] = { NULL };
-Il2CppClass* g_classes[MAX_META_COUNT] = { NULL };
+TypeInfo* g_classes[MAX_META_COUNT] = { NULL };
 char *g_methodNames[MAX_META_COUNT] = { NULL };
 
 char* removeAllChars(char* str, char c)
@@ -50,13 +50,13 @@ const char* GetStringFromIndex(StringIndex index)
 	return strings;
 }
 
-static Il2CppClass* FromTypeDefinition(TypeDefinitionIndex index)
+static TypeInfo* FromTypeDefinition(TypeDefinitionIndex index)
 {
 	assert(index >= 0 && static_cast<uint32_t>(index) < s_GlobalMetadataHeader->typeDefinitionsCount / sizeof(Il2CppTypeDefinition));
 	const Il2CppTypeDefinition* typeDefinitions = (const Il2CppTypeDefinition*)((const char*)s_GlobalMetadata + s_GlobalMetadataHeader->typeDefinitionsOffset);
 	const Il2CppTypeDefinition* typeDefinition = typeDefinitions + index;
 	//const Il2CppTypeDefinitionSizes* typeDefinitionSizes = s_Il2CppMetadataRegistration->typeDefinitionsSizes + index;
-	Il2CppClass* typeInfo = (Il2CppClass*)malloc(sizeof(Il2CppClass));
+	TypeInfo* typeInfo = (TypeInfo*)malloc(sizeof(TypeInfo));
 	//typeInfo->image = GetImageForTypeDefinitionIndex(index);
 	typeInfo->name = GetStringFromIndex(typeDefinition->nameIndex);
 	typeInfo->namespaze = GetStringFromIndex(typeDefinition->namespaceIndex);
@@ -113,7 +113,7 @@ const Il2CppMethodDefinition* GetMethodDefinitionFromIndex(MethodIndex index)
 }
 
 
-void SetupMethods(Il2CppClass *klass)
+void SetupMethods(TypeInfo *klass)
 {
 
 	if (klass->method_count == 0)
@@ -188,7 +188,7 @@ void SetupMethods(Il2CppClass *klass)
 }
 
 
-Il2CppClass* GetTypeInfoFromTypeDefinitionIndex(TypeDefinitionIndex index)
+TypeInfo* GetTypeInfoFromTypeDefinitionIndex(TypeDefinitionIndex index)
 {
 	if (index == kTypeIndexInvalid)
 		return NULL;
@@ -289,13 +289,13 @@ int main()
 	s_GlobalMetadata = addr;
 	s_GlobalMetadataHeader = (Il2CppGlobalMetadataHeader*)addr;
 
-
+/*
 	if (s_GlobalMetadataHeader->version != 21) {
 		std::cerr << "[error] metadata version is: " << s_GlobalMetadataHeader->version << std::endl;
 	}
 	assert(s_GlobalMetadataHeader->sanity == 0xFAB11BAF);
 	assert(s_GlobalMetadataHeader->version == 21);
-
+*/
 
 
 	stringLiteralFile.open(StringLiteralFileName);
